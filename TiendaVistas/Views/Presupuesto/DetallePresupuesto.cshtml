@@ -1,0 +1,24 @@
+@model List<PresupuestoDetalle>
+
+<div class="text-center">
+    <h1>DETALLE DEL PRESUPUESTO @ViewBag.IdPresupuesto</h1>
+    <table class="table table table-bordered">
+        <thead class="bg-primary">
+            <th scope="col">PRODUCTO ID</th>
+            <th scope="col">DESCRIPCIÓN</th>
+            <th scope="col">PRECIO POR UNIDAD</th>
+            <th scope="col">CANTIDAD</th>
+        </thead>
+        <tbody>
+            @foreach (var detalle in Model)
+            {
+                <tr>
+                    <td>@detalle.Producto.IdProducto</td>
+                    <td>@detalle.Producto.Descripcion</td>
+                    <td>@detalle.Producto.Precio</td>
+                    <td>@detalle.Cantidad</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

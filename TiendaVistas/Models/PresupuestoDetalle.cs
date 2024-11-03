@@ -1,4 +1,4 @@
-namespace tienda;
+namespace TiendaVistas.Models;
 
 public class PresupuestoDetalle{
     Producto? producto;

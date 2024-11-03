@@ -1,0 +1,30 @@
+@model List<Presupuesto>
+
+<div class="text-center">
+    <h1>PRESUPUESTOS</h1>
+    <table class="table table table-bordered">
+        <thead class="bg-primary">
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE DESTINATARIO</th>
+            <th scope="col">DETALLES</th>
+        </thead>
+        <tbody>
+            @foreach (var presupuesto in Model)
+            {
+                <tr>
+                    <td>@presupuesto.IdPresupuesto</td>
+                    <td>@presupuesto.NombreDestinatario</td>
+                    <td>
+                        @if (presupuesto.Detalle.Count() != 0)
+                        {
+                            <ul class="navbar-nav">
+                                <li><a class="primary" asp-controller="Presupuesto" asp-action="DetallePresupuesto"
+                                        asp-route-idPresupuesto="@presupuesto.IdPresupuesto">Ver detalle</a></li>
+                            </ul>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,5 +1,6 @@
 using Microsoft.Data.Sqlite;
-namespace tienda;
+using TiendaVistas.Models;
+namespace TiendaVistas.Repositories;
 
 /*
 ● --------Crear un nuevo Presupuesto. (recibe un objeto Presupuesto)
@@ -10,7 +11,7 @@ namespace tienda;
 
 public class PresupuestoRepository
 {
-    public string cadenaConexion = "Data Source=./../Tienda.db";
+    public string cadenaConexion = "Data Source=./Tienda.db";
     public List<Presupuesto> presupuestosCompleto = new List<Presupuesto>();
     public List<Presupuesto> presupuestosSinDetalles = new List<Presupuesto>();
 
