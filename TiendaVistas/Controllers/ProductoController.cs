@@ -34,10 +34,22 @@ public class ProductoController : Controller
     }
 
     //_____________CREAR PRODUCTO___________________
-    [HttpPost("Crear")]
+    [HttpGet("Crear")]
     public IActionResult Crear()
     {
         return View();
+    }
+    [HttpPost("CrearProducto")]
+    public IActionResult CrearProducto()
+    {
+        Producto producto = new Producto();
+        producto.Descripcion = Request.Form["Descripcion"];
+        producto.Precio = int.Parse(Request.Form["Precio"]);
+        productoRepositorio.CrearProducto(producto);
+
+        ViewBag.Creado = true;
+
+        return View("Crear");
     }
 
     //_____________MODIFICAR PRODUCTO___________________

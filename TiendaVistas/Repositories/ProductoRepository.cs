@@ -42,23 +42,23 @@ public class ProductoRepository
         return productos;
     }
 
-    // public void CrearProducto(Producto productoNuevo)
-    // {
-    //     var queryString = $"INSERT INTO Productos (Descripcion,Precio) VALUES (@descripcion,@precio);";
-    //     using (SqliteConnection conexion = new SqliteConnection(cadenaConexion))
-    //     {
-    //         conexion.Open();
-    //         SqliteCommand comando = new SqliteCommand(queryString, conexion);
+    public void CrearProducto(Producto productoNuevo)
+    {
+        var queryString = $"INSERT INTO Productos (Descripcion,Precio) VALUES (@descripcion,@precio);";
+        using (SqliteConnection conexion = new SqliteConnection(cadenaConexion))
+        {
+            conexion.Open();
+            SqliteCommand comando = new SqliteCommand(queryString, conexion);
 
-    //         comando.Parameters.Add(new SqliteParameter("@descripcion", productoNuevo.Descripcion));
-    //         comando.Parameters.Add(new SqliteParameter("@precio", productoNuevo.Precio));
+            comando.Parameters.Add(new SqliteParameter("@descripcion", productoNuevo.Descripcion));
+            comando.Parameters.Add(new SqliteParameter("@precio", productoNuevo.Precio));
 
-    //         comando.ExecuteNonQuery();
-    //         conexion.Close();
-    //     }
+            comando.ExecuteNonQuery();
+            conexion.Close();
+        }
 
-    //     productos.Add(productoNuevo);
-    // }
+        productos.Add(productoNuevo);
+    }
 
     // public void ModificarProducto(int idProducto, Producto productoNuevo)
     // {
