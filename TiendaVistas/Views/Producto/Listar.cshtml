@@ -4,18 +4,30 @@
     <h1>PRODUCTOS</h1>
     <table class="table table table-bordered">
         <thead class="bg-primary">
-        <th scope="col">ID</th>
-        <th scope="col">DESCRIPCIÓN</th>
-        <th scope="col">PRECIO</th>
+            <th scope="col">ID</th>
+            <th scope="col">DESCRIPCIÓN</th>
+            <th scope="col">PRECIO</th>
+            <th scope="col"></th>
         </thead>
         <tbody>
-    @foreach(var producto in Model){
-        <tr>
-        <td>@producto.IdProducto</td>
-        <td>@producto.Descripcion</td>
-        <td>@producto.Precio</td>
-        </tr>
-    }
-    </tbody>
+            @foreach (var producto in Model)
+            {
+                <tr>
+                    <td>@producto.IdProducto</td>
+                    <td>@producto.Descripcion</td>
+                    <td>@producto.Precio</td>
+                    @* _________________ MODIFICAR PRODUCTO (link) ______________________ *@
+                    @* _________________ ELIMINAR PRODUCTO (link) ______________________ *@
+                    <td>
+                        <ul class="navbar-nav">
+                            <li><a class="primary" asp-controller="Producto" asp-action="Modificar"
+                                    asp-route-idProducto="@producto.IdProducto">Modificar @producto.IdProducto</a></li>
+                            <li><a class="primary" asp-controller="Producto" asp-action="Eliminar"
+                                    asp-route-idProducto="@producto.IdProducto">Eliminar @producto.IdProducto</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 </div>

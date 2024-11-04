@@ -61,9 +61,12 @@ public class ProductoController : Controller
     // }
 
     //_____________ELIMINAR PRODUCTO___________________
-    // [HttpDelete("Eliminar")]
-    // public IActionResult Eliminar(int idProducto)
-    // {
-    //     return View();
-    // }
+    [HttpGet("Eliminar")]
+    public IActionResult Eliminar(int idProducto)
+    {
+        productoRepositorio.EliminarProducto(idProducto);
+
+        ViewBag.Eliminado = $"Producto {idProducto} eliminado";
+        return View();
+    }
 }
