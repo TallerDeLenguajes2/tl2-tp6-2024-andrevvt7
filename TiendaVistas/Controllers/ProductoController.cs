@@ -53,12 +53,34 @@ public class ProductoController : Controller
     }
 
     //_____________MODIFICAR PRODUCTO___________________
-    // [HttpPut("Modificar")]
+    [HttpGet("Modificar")]
+    public IActionResult Modificar(int idProducto)
+    {
+        ViewBag.IdProducto = idProducto;
+        return View();
+    }
 
-    // public IActionResult Modificar(int IdProducto)
-    // {
-    //     return View();
-    // }
+    [HttpPost("ModificarProducto")]
+    public IActionResult ModificarProducto()
+    {
+        int idProducto = int.Parse(Request.Form["IdProducto"]);
+        Producto producto = productos.FirstOrDefault(p => p.IdProducto == idProducto);
+        
+        if (Request.Form["Precio"] != "")
+        {
+            producto.Precio = Convert.ToInt32(Request.Form["Precio"]);
+        }
+
+        if (Request.Form["Descripcion"] != "")
+        {
+            producto.Descripcion = Request.Form["Descripcion"];
+        }
+
+        productoRepositorio.ModificarProducto(idProducto, producto);
+        ViewBag.Modificado = true;
+
+        return View("Modificar");
+    }
 
     //_____________ELIMINAR PRODUCTO___________________
     [HttpGet("Eliminar")]
