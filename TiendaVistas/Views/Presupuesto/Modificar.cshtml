@@ -1,0 +1,23 @@
+<div class="text-center">
+    <h1> AGREGAR DETALLE A PRESUPUESTO</h1>
+
+    <form asp-controller="Presupuesto" asp-action="ModificarPresupuesto" method="post">
+        <div class="form-group">
+            <input type="hidden" name="IdPresupuesto" value="@ViewBag.IdPresupuesto"/>
+            <label for="idProducto">Id producto</label>
+            <input name="IdProducto" type="text" class="form-control" id="idProducto">
+            <label for="cantidad">Cantidad</label>
+            <input name="Cantidad" type="text" class="form-control" id="cantidad">
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+    @if (ViewBag.Modificado == true)
+    {
+        <div class="alert alert-success mt-3">
+            Presupuesto modificado exitosamente.
+        </div>
+    }
+
+</div>

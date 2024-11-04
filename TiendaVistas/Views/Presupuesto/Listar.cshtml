@@ -7,6 +7,7 @@
             <th scope="col">ID</th>
             <th scope="col">NOMBRE DESTINATARIO</th>
             <th scope="col">DETALLES</th>
+            <th scope="col"></th>
         </thead>
         <tbody>
             @foreach (var presupuesto in Model)
@@ -22,6 +23,14 @@
                                         asp-route-idPresupuesto="@presupuesto.IdPresupuesto">Ver detalle</a></li>
                             </ul>
                         }
+                    </td>
+                    @* _________________ MODIFICAR PRESUPUESTO (link) ______________________ *@
+                    @* _________________ ELIMINAR PRESUPUESTO (link) ______________________ *@
+                    <td>
+                        <ul class="navbar-nav">
+                            <li><a class="primary" asp-controller="Presupuesto" asp-action="Modificar" asp-route-idPresupuesto="@presupuesto.IdPresupuesto">Modificar @presupuesto.IdPresupuesto</a></li>
+                            <li><a class="primary" asp-controller="Presupuesto" asp-action="Eliminar" asp-route-idPresupuesto="@presupuesto.IdPresupuesto">Eliminar @presupuesto.IdPresupuesto</a></li>
+                        </ul>
                     </td>
                 </tr>
             }

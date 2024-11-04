@@ -41,62 +41,17 @@ public class ProductoController : Controller
     }
 
     //_____________MODIFICAR PRODUCTO___________________
-    [HttpPut("Modificar")]
+    // [HttpPut("Modificar")]
 
-    public IActionResult Modificar()
-    {
-        return View();
-    }
+    // public IActionResult Modificar(int IdProducto)
+    // {
+    //     return View();
+    // }
 
     //_____________ELIMINAR PRODUCTO___________________
-    [HttpDelete("Eliminar")]
-    public IActionResult Eliminar()
-    {
-        return View();
-    }
-
-    //     [HttpGet("GetProductos")]
-    //     public IActionResult GetProductos()
-    //     {
-    //         if (productos.Count() == 0)
-    //         {
-    //             return NotFound("No hay productos");
-    //         }
-
-    //         return Ok(productos);
-    //     }
-
-    //     [HttpPost("CrearProducto")]
-    //     public IActionResult CrearProducto([FromBody] Producto producto)
-    //     {
-    //         productoRepositorio.CrearProducto(producto);
-
-    //         return Ok($"Producto creado con ID {producto.IdProducto}");
-    //     }
-
-    //     [HttpPut("ModificarProducto/{id}")]
-    //     public IActionResult ModificarProducto(int id, [FromBody]Producto producto)
-    //     {
-    //         if (productos.FirstOrDefault(p => p.IdProducto == id) == null)
-    //         {
-    //             return NotFound($"No se encontró el producto con ID {id}");
-    //         }
-
-    //         productoRepositorio.ModificarProducto(id, producto);
-
-    //         return Ok($"Producto {id} modificado.");
-    //     }
-
-    //     [HttpDelete("EliminarProducto/{id}")]
-    //     public IActionResult EliminarProducto(int id)
-    //     {
-    //         if (productos.FirstOrDefault(p => p.IdProducto == id) == null)
-    //         {
-    //             return NotFound($"El producto con ID {id} no existe");
-    //         }
-
-    //         productoRepositorio.EliminarProducto(id);
-
-    //         return Ok($"Producto eliminado: ID {id}");
-    //     }
+    // [HttpDelete("Eliminar")]
+    // public IActionResult Eliminar(int idProducto)
+    // {
+    //     return View();
+    // }
 }

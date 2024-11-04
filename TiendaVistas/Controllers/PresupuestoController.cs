@@ -22,48 +22,84 @@ public class PresupuestoController : Controller
     private readonly ILogger<PresupuestoController> __logger;
     List<Presupuesto> presupuestos;
     PresupuestoRepository presupuestoRepositorio = new PresupuestoRepository();
+    List<Producto> productos;
+    ProductoRepository productoRepositorio = new ProductoRepository();
 
     public PresupuestoController(ILogger<PresupuestoController> logger)
     {
         __logger = logger;
         presupuestos = presupuestoRepositorio.GetPresupuestosCompleto();
+        productos = productoRepositorio.GetProductos();
     }
 
-//_____________LISTAR PRESUPUESTOS___________________
+    //_____________LISTAR PRESUPUESTOS___________________
     [HttpGet("Listar")]
     public IActionResult Listar()
     {
         return View(presupuestos);
     }
 
-//_____________OBTENER DETALLE DE UN PRESUPUESTO___________________
+    //_____________OBTENER DETALLE DE UN PRESUPUESTO___________________
     [HttpGet("DetallePresupuesto")]
-    public IActionResult DetallePresupuesto(int IdPresupuesto)
+    public IActionResult DetallePresupuesto(int idPresupuesto)
     {
-        Presupuesto? presupuesto = presupuestos.FirstOrDefault(p => p.IdPresupuesto == IdPresupuesto);
-        ViewBag.IdPresupuesto = IdPresupuesto;
+        Presupuesto? presupuesto = presupuestos.FirstOrDefault(p => p.IdPresupuesto == idPresupuesto);
+        ViewBag.IdPresupuesto = idPresupuesto;
 
         return View(presupuesto.Detalle);
     }
 
-//_____________CREAR PRESUPUESTO___________________
-    [HttpPost("Crear")]
+    //_____________CREAR PRESUPUESTO___________________
+    [HttpGet("Crear")]
     public IActionResult Crear()
     {
         return View();
     }
 
-//_____________MODIFICAR PRESUPUESTO___________________
-    [HttpPut("Modificar")]
-    public IActionResult Modificar()
+    [HttpPost("CrearPresupuesto")]
+    public IActionResult CrearPresupuesto()
     {
+        Presupuesto presupuesto = new Presupuesto();
+        presupuesto.NombreDestinatario = Request.Form["NombreDestinatario"];
+        presupuestoRepositorio.CrearPresupuesto(presupuesto);
+
+        ViewBag.Creado = true;
+
+        return View("Crear");
+    }
+
+    //_____________MODIFICAR PRESUPUESTO___________________
+    [HttpGet("Modificar")]
+    public IActionResult Modificar(int idPresupuesto)
+    {
+        ViewBag.IdPresupuesto = idPresupuesto;
         return View();
     }
 
-//_____________ELIMINAR PRESUPUESTO___________________
-    [HttpDelete("Eliminar")]
-    public IActionResult Eliminar()
+    [HttpPost("ModificarPresupuesto")]
+    public IActionResult ModificarPresupuesto()
     {
+        Producto producto = productos.FirstOrDefault(p => p.IdProducto == int.Parse(Request.Form["IdProducto"]));
+        int cantidad = int.Parse(Request.Form["Cantidad"]);
+        int idPresupuesto = int.Parse(Request.Form["IdPresupuesto"]);
+        PresupuestoDetalle detalleNuevo = new PresupuestoDetalle();
+        detalleNuevo.Producto = producto;
+        detalleNuevo.Cantidad = cantidad;
+
+        presupuestoRepositorio.AgregarDetalle(idPresupuesto, detalleNuevo);
+        ViewBag.Modificado = true;
+
+        return View("Modificar");
+    }
+
+    //_____________ELIMINAR PRESUPUESTO___________________
+    [HttpGet("Eliminar")]
+    public IActionResult Eliminar(int idPresupuesto)
+    {
+        presupuestoRepositorio.EliminarPresupuesto(idPresupuesto);
+
+        ViewBag.Eliminado = $"Presupuesto {idPresupuesto} eliminado";
+
         return View();
     }
 }
