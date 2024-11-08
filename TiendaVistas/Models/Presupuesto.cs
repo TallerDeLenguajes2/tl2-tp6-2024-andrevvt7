@@ -2,21 +2,26 @@ namespace TiendaVistas.Models;
 
 public class Presupuesto{
     int idPresupuesto;
-    string? nombreDestinatario;
+    Cliente cliente;
     List<PresupuestoDetalle>? detalle;
 
     public int IdPresupuesto { get => idPresupuesto; set => idPresupuesto = value; }
-    public string? NombreDestinatario { get => nombreDestinatario; set => nombreDestinatario = value; }
+    public Cliente Cliente { get => cliente; set => cliente = value; }
     public List<PresupuestoDetalle>? Detalle { get => detalle; set => detalle = value; }
 
     public Presupuesto(){
         Detalle = new List<PresupuestoDetalle>();
+        Cliente = new Cliente();
     }
     public void AgregarProducto(Producto producto, int cantidad){
         PresupuestoDetalle presupuestoDetalleNuevo = new PresupuestoDetalle();
         presupuestoDetalleNuevo.CargarProducto(producto);
         presupuestoDetalleNuevo.Cantidad = cantidad;
         Detalle.Add(presupuestoDetalleNuevo);
+    }
+
+    public void AgregarCliente(Cliente cliente){
+        Cliente = cliente;
     }
 
     public int MontoPresupuesto(){

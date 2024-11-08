@@ -5,7 +5,7 @@
     <table class="table table table-bordered">
         <thead class="bg-primary">
             <th scope="col">ID</th>
-            <th scope="col">NOMBRE DESTINATARIO</th>
+            <th scope="col">ID CLIENTE</th>
             <th scope="col">DETALLES</th>
             <th scope="col"></th>
         </thead>
@@ -14,7 +14,7 @@
             {
                 <tr>
                     <td>@presupuesto.IdPresupuesto</td>
-                    <td>@presupuesto.NombreDestinatario</td>
+                    <td>@presupuesto.Cliente.IdCliente</td>
                     <td>
                         @if (presupuesto.Detalle.Count() != 0)
                         {
