@@ -60,7 +60,7 @@ public class PresupuestoController : Controller
     public IActionResult CrearPresupuesto()
     {
         Presupuesto presupuesto = new Presupuesto();
-        presupuesto.Cliente.IdCliente = Convert.ToInt32(Request.Form["IdCliente"]);
+        presupuesto.Cliente.IdCliente = Convert.ToInt32(Request.Form["Cliente.IdCliente"]);
         presupuestoRepositorio.CrearPresupuesto(presupuesto);
 
         ViewBag.Creado = true;

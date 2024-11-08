@@ -1,0 +1,35 @@
+@model List<Cliente>
+
+<div class="text-center">
+    <h1>CLIENTE</h1>
+    <table class="table table table-bordered">
+        <thead class="bg-primary">
+            <th scope="col">ID</th>
+            <th scope="col">NOMBRE</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">TELÉFONO</th>
+            <th scope="col"></th>
+        </thead>
+        <tbody>
+            @foreach (var cliente in Model)
+            {
+                <tr>
+                    <td>@cliente.IdCliente</td>
+                    <td>@cliente.Nombre</td>
+                    <td>@cliente.Email</td>
+                    <td>@cliente.Telefono</td>
+                    @* _________________ MODIFICAR CLIENTE (link) ______________________ *@
+                    @* _________________ ELIMINAR CLIENTE (link) ______________________ *@
+                    <td>
+                        <ul class="navbar-nav">
+                            <li><a class="primary" asp-controller="Cliente" asp-action="Modificar"
+                                    asp-route-IdCliente="@cliente.IdCliente">Modificar @cliente.IdCliente</a></li>
+                            <li><a class="primary" asp-controller="Cliente" asp-action="Eliminar"
+                                    asp-route-IdCliente="@cliente.IdCliente">Eliminar @cliente.IdCliente</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

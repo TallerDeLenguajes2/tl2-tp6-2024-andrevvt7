@@ -1,0 +1,26 @@
+@model Cliente
+
+<div class="text-center">
+    <h1> CREAR CLIENTE</h1>
+
+    <form asp-controller="Cliente" asp-action="CrearCliente" method="post">
+        <div class="form-group">
+            <label asp-for="Nombre">Nombre</label>
+            <input asp-for="Nombre" type="text" class="form-control">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="text" class="form-control">
+            <label asp-for="Telefono">Teléfono</label>
+            <input asp-for="Telefono" type="text" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+     @if (ViewBag.Creado == true)
+    {
+        <div class="alert alert-success mt-3">
+            Cliente creado exitosamente.
+        </div>
+    }
+
+</div>

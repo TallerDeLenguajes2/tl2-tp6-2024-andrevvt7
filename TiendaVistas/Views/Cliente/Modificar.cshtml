@@ -1,0 +1,25 @@
+@model Cliente
+
+<div class="text-center">
+    <h1>MODIFICAR CLIENTE</h1>
+
+    <form asp-controller="Cliente" asp-action="ModificarCliente" method="post">
+        <div class="form-group">
+            <input type="hidden" name="IdCliente" value="@ViewBag.IdCliente"/>
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" type="text" class="form-control">
+            <label asp-for="Telefono">Teléfono</label>
+            <input asp-for="Telefono" type="text" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+    @if (ViewBag.Modificado == true)
+    {
+        <div class="alert alert-success mt-3">
+            Cliente modificado exitosamente.
+        </div>
+    }
+
+</div>
