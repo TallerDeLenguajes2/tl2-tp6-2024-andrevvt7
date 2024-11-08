@@ -55,3 +55,4 @@ D:\FACET - 2024\SEGUNDO CUATRIMESTRE\Taller de lenguajes 2\TrabajosPracticosTL2\
 D:\FACET - 2024\SEGUNDO CUATRIMESTRE\Taller de lenguajes 2\TrabajosPracticosTL2\tl2-tp6-2024-andrevvt7\TiendaVistas\obj\Debug\net8.0\TiendaVistas.pdb
 D:\FACET - 2024\SEGUNDO CUATRIMESTRE\Taller de lenguajes 2\TrabajosPracticosTL2\tl2-tp6-2024-andrevvt7\TiendaVistas\obj\Debug\net8.0\TiendaVistas.genruntimeconfig.cache
 D:\FACET - 2024\SEGUNDO CUATRIMESTRE\Taller de lenguajes 2\TrabajosPracticosTL2\tl2-tp6-2024-andrevvt7\TiendaVistas\obj\Debug\net8.0\ref\TiendaVistas.dll
+D:\FACET - 2024\SEGUNDO CUATRIMESTRE\Taller de lenguajes 2\TrabajosPracticosTL2\tl2-tp6-2024-andrevvt7\TiendaVistas\bin\Debug\net8.0\DB\Tienda.db

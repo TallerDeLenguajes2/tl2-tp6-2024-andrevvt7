@@ -11,7 +11,7 @@ namespace TiendaVistas.Repositories;
 
 public class PresupuestoRepository
 {
-    public string cadenaConexion = "Data Source=./Tienda.db";
+    public string cadenaConexion = "Data Source=DB/Tienda.db";
     public List<Presupuesto> presupuestosCompleto = new List<Presupuesto>();
     public List<Presupuesto> presupuestosSinDetalles = new List<Presupuesto>();
 
@@ -149,5 +149,4 @@ public class PresupuestoRepository
             conexion.Close();
         }
     }
-
 }

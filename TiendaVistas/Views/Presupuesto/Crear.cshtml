@@ -5,8 +5,8 @@
 
     <form asp-controller="Presupuesto" asp-action="CrearPresupuesto" method="post">
         <div class="form-group">
-            <label for="destinatario">Nombre destinatario</label>
-            <input asp-for="NombreDestinatario" type="text" class="form-control" id="destinatario">
+            <label asp-for="NombreDestinatario">Nombre destinatario</label>
+            <input asp-for="NombreDestinatario" type="text" class="form-control">
         </div>
 
         <button type="submit" class="btn btn-default">Submit</button>

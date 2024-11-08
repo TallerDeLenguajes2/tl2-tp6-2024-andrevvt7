@@ -76,15 +76,14 @@ public class PresupuestoController : Controller
         return View();
     }
 
-    [HttpPost("ModificarPresupuesto")]
+    [HttpPost("ModificarPresupuesto")] //Agregar DETALLE NUEVO
     public IActionResult ModificarPresupuesto()
     {
         Producto producto = productos.FirstOrDefault(p => p.IdProducto == int.Parse(Request.Form["IdProducto"]));
-        int cantidad = int.Parse(Request.Form["Cantidad"]);
         int idPresupuesto = int.Parse(Request.Form["IdPresupuesto"]);
         PresupuestoDetalle detalleNuevo = new PresupuestoDetalle();
         detalleNuevo.Producto = producto;
-        detalleNuevo.Cantidad = cantidad;
+        detalleNuevo.Cantidad = int.Parse(Request.Form["Cantidad"]);
 
         presupuestoRepositorio.AgregarDetalle(idPresupuesto, detalleNuevo);
         ViewBag.Modificado = true;

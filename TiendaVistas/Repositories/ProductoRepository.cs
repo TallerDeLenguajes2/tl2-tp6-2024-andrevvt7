@@ -14,7 +14,7 @@ operaciones relacionadas con Productos. Este repositorio debe incluir métodos p
 */
 public class ProductoRepository
 {
-    public string cadenaConexion = "Data Source=./Tienda.db";
+    public string cadenaConexion = "Data Source=DB/Tienda.db";
     public List<Producto> productos = new List<Producto>();
     
     public List<Producto> GetProductos()
@@ -81,15 +81,20 @@ public class ProductoRepository
     // ● Eliminar un Producto por ID
     public void EliminarProducto(int idProducto)
     {
-        var queryString = $"DELETE FROM Productos WHERE idProducto=@idP;";
+        var queryString = $"DELETE FROM PresupuestosDetalle WHERE idProducto=@idP;";
+        var queryString2 = $"DELETE FROM Productos WHERE idProducto=@idP;";
         using (SqliteConnection conexion = new SqliteConnection(cadenaConexion))
         {
             conexion.Open();
             SqliteCommand comando = new SqliteCommand(queryString, conexion);
+            SqliteCommand comando2 = new SqliteCommand(queryString2, conexion);
 
             comando.Parameters.Add(new SqliteParameter("@idP", idProducto));
+            comando2.Parameters.Add(new SqliteParameter("@idP", idProducto));
 
             comando.ExecuteNonQuery();
+            comando2.ExecuteNonQuery();
+
             conexion.Close();
         }
     }

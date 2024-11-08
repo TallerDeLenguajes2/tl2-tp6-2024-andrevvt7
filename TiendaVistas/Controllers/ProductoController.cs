@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using System.Diagnostics;
 using TiendaVistas.Models;
 using TiendaVistas.Repositories;
+using System.Threading.Tasks;
 namespace TiendaVistas.Controllers;
 // namespace tienda;
 
@@ -65,7 +66,7 @@ public class ProductoController : Controller
     {
         int idProducto = int.Parse(Request.Form["IdProducto"]);
         Producto producto = productos.FirstOrDefault(p => p.IdProducto == idProducto);
-        
+
         if (Request.Form["Precio"] != "")
         {
             producto.Precio = Convert.ToInt32(Request.Form["Precio"]);
@@ -89,6 +90,7 @@ public class ProductoController : Controller
         productoRepositorio.EliminarProducto(idProducto);
 
         ViewBag.Eliminado = $"Producto {idProducto} eliminado";
+        
         return View();
     }
 }
